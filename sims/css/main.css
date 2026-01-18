@@ -1,0 +1,224 @@
+/* Firefly Algorithm Simulator - Custom Styles */
+
+:root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f5f5f5;
+    --contour-light: #e0e0e0;
+    --contour-dark: #404040;
+    --firefly-dim: #666666;
+    --firefly-bright: #ffdd44;
+    --firefly-best: #ffaa00;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg-secondary);
+    min-height: 100vh;
+}
+
+header {
+    background: var(--bg-primary);
+    padding: 0.75rem 1.5rem;
+    border-bottom: 1px solid var(--contour-light);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+}
+
+main {
+    display: flex;
+    height: calc(100vh - 60px);
+    gap: 0;
+}
+
+/* Controls Panel */
+.controls {
+    width: 260px;
+    min-width: 260px;
+    background: var(--bg-primary);
+    padding: 1rem;
+    overflow-y: auto;
+    border-right: 1px solid var(--contour-light);
+}
+
+.controls section {
+    margin-bottom: 1.5rem;
+}
+
+.controls section:last-child {
+    margin-bottom: 0;
+}
+
+.controls h2 {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+    margin: 0 0 0.75rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--contour-light);
+}
+
+.controls label {
+    display: block;
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+    color: var(--text-primary);
+}
+
+.controls label span {
+    font-weight: 600;
+    color: var(--firefly-best);
+}
+
+.controls input[type="range"] {
+    width: 100%;
+    margin-bottom: 1rem;
+    height: 6px;
+}
+
+.controls select {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 0.875rem;
+    border: 1px solid var(--contour-light);
+    border-radius: 4px;
+    background: var(--bg-primary);
+    margin-bottom: 0.5rem;
+}
+
+.button-group {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.button-group button {
+    flex: 1;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#start-btn {
+    background: var(--firefly-best);
+    color: #000;
+}
+
+#start-btn:hover {
+    background: var(--firefly-bright);
+}
+
+#start-btn.running {
+    background: var(--contour-dark);
+    color: #fff;
+}
+
+.secondary {
+    background: var(--contour-light);
+    color: var(--text-primary);
+}
+
+.secondary:hover {
+    background: #d0d0d0;
+}
+
+/* Checkbox styling */
+.controls input[type="checkbox"] {
+    margin-right: 0.5rem;
+    accent-color: var(--firefly-best);
+}
+
+/* Canvas Container */
+.canvas-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-secondary);
+    position: relative;
+}
+
+#simulation-canvas {
+    flex: 1;
+    display: block;
+    background: var(--bg-primary);
+}
+
+/* Stats Bar */
+.stats-bar {
+    display: flex;
+    gap: 2rem;
+    padding: 0.75rem 1rem;
+    background: var(--bg-primary);
+    border-top: 1px solid var(--contour-light);
+    font-size: 0.8125rem;
+    font-family: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+    color: var(--text-secondary);
+}
+
+.stats-bar span span {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    main {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .controls {
+        width: 100%;
+        min-width: 100%;
+        max-height: 40vh;
+        border-right: none;
+        border-bottom: 1px solid var(--contour-light);
+    }
+
+    .canvas-container {
+        height: 60vh;
+    }
+}
+
+/* Keyboard shortcut hints */
+[data-tooltip] {
+    position: relative;
+}
+
+[data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.25rem 0.5rem;
+    background: var(--contour-dark);
+    color: #fff;
+    font-size: 0.75rem;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+}
+
+[data-tooltip]:hover::after {
+    opacity: 1;
+}

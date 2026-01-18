@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firefly Algorithm Simulator</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <header>
+        <h1>Firefly Algorithm Simulator</h1>
+    </header>
+
+    <main>
+        <aside class="controls">
+            <section>
+                <h2>Parameters</h2>
+
+                <label for="n-slider">
+                    n (fireflies): <span id="n-value">40</span>
+                </label>
+                <input type="range" id="n-slider" min="5" max="100" value="40">
+
+                <label for="gamma-slider">
+                    γ (absorption): <span id="gamma-value">1.0</span>
+                </label>
+                <input type="range" id="gamma-slider" min="0.01" max="10" step="0.01" value="1.0">
+
+                <label for="beta0-slider">
+                    β₀ (base attraction): <span id="beta0-value">1.0</span>
+                </label>
+                <input type="range" id="beta0-slider" min="0.1" max="2.0" step="0.01" value="1.0">
+
+                <label for="alpha-slider">
+                    α (randomization): <span id="alpha-value">0.2</span>
+                </label>
+                <input type="range" id="alpha-slider" min="0" max="1" step="0.01" value="0.2">
+            </section>
+
+            <section>
+                <h2>Objective Function</h2>
+                <select id="function-select">
+                    <option value="michalewicz">Michalewicz</option>
+                    <option value="rastrigin">Rastrigin</option>
+                    <option value="rosenbrock">Rosenbrock</option>
+                    <option value="himmelblau">Himmelblau</option>
+                    <option value="sphere">Sphere</option>
+                </select>
+            </section>
+
+            <section>
+                <h2>Simulation</h2>
+                <div class="button-group">
+                    <button id="start-btn">Start</button>
+                    <button id="reset-btn" class="secondary">Reset</button>
+                </div>
+
+                <label for="speed-slider">
+                    Speed: <span id="speed-value">1</span> iter/s
+                </label>
+                <input type="range" id="speed-slider" min="1" max="60" value="1">
+
+                <label for="timescale-slider">
+                    Time Scale: <span id="timescale-value">0.05</span>x
+                </label>
+                <input type="range" id="timescale-slider" min="0.01" max="2.0" step="0.01" value="0.05">
+            </section>
+
+            <section>
+                <h2>Display</h2>
+                <label>
+                    <input type="checkbox" id="trails-toggle">
+                    Show trails
+                </label>
+                <label>
+                    <input type="checkbox" id="contours-toggle" checked>
+                    Show contours
+                </label>
+            </section>
+        </aside>
+
+        <div class="canvas-container">
+            <canvas id="simulation-canvas"></canvas>
+            <div class="stats-bar">
+                <span>Gen: <span id="stat-gen">0</span></span>
+                <span>Best: <span id="stat-best">--</span></span>
+                <span>Pos: (<span id="stat-x">--</span>, <span id="stat-y">--</span>)</span>
+            </div>
+        </div>
+    </main>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
